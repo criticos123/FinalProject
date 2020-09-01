@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import SignIn from "./SignIn";
 import Homepage from "./homepage";
-import TournamentPage from "./TournamentPage"
+import TournamentPage from "./TournamentPage";
 
 const App = () => {
   return (
@@ -17,7 +17,7 @@ const App = () => {
         <Route exact path="/home">
           <Homepage />
         </Route>
-        <Route exact path="/tournament">
+        <Route exact path="/tournament/:id">
           <TournamentPage />
         </Route>
       </Switch>

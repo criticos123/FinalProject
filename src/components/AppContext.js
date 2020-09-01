@@ -26,6 +26,7 @@ const providers = {
 const AppProvider = ({ children, signInWithGoogle, signOut, user }) => {
   const [appUser, setAppUser] = useState({});
   const [message, setMessage] = useState("");
+  const [tourney, setTourney] = useState("");
   const handleSignOut = () => {
     signOut();
     setAppUser({});
@@ -38,6 +39,7 @@ const AppProvider = ({ children, signInWithGoogle, signOut, user }) => {
         headers: {
           "Content-Type": "application/json",
         },
+
         body: JSON.stringify({
           displayName: user.displayName,
           email: user.email,
@@ -50,11 +52,23 @@ const AppProvider = ({ children, signInWithGoogle, signOut, user }) => {
           setMessage(json.message);
         });
     }
+    fetch(`/tournament/:id`)
+      .then((res) => res.json())
+      .then((json) => {
+        setTourney(json.mapTournaments);
+      });
   }, [user]);
 
   return (
     <AppContext.Provider
-      value={{ appUser, signInWithGoogle, handleSignOut, message }}
+      value={{
+        appUser,
+        signInWithGoogle,
+        handleSignOut,
+        message,
+        tourney,
+        setTourney,
+      }}
     >
       {children}
     </AppContext.Provider>

@@ -1,23 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import Header from "./header";
-import Feed from "./Feed";
-import Tournament from "./Tournament";
+import TournamentFour from "./TournamentFour";
+import Comment from "./Comment";
+import TournamentEight from "./TournamentEight";
+import { AppContext } from "./AppContext";
 
-const TournamentPage= () => {
+const TournamentPage = () => {
+  const { tourney } = useContext(AppContext);
+  console.log(tourney);
+  let players = "4";
   return (
     <>
       <Header />
       <Wrapper>
-          <Tournament/>
+        {players === "4" ? <TournamentFour /> : <TournamentEight />}
+        <Comment />
       </Wrapper>
-      </>
+    </>
   );
-  
 };
 
-const Wrapper= styled.div`
-  background-color:#DDA0DD;
-`;
+const Wrapper = styled.div``;
 
 export default TournamentPage;
