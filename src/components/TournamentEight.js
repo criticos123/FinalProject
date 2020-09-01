@@ -1,79 +1,257 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { AppContext } from "./AppContext";
 
 const TournamentEight = () => {
+  const [position, setPosition] = useState({
+    a: "p1",
+    b: "p2",
+    c: "p3",
+    d: "p4",
+    e: "p5",
+    f: "p6",
+    g: "p7",
+    h: "p8",
+    i: null,
+    j: null,
+    k: null,
+    l: null,
+    m: null,
+    n: null,
+    o: null,
+    p: null,
+  });
+
+  const win = (starting, advance) => {
+    if (position[starting] !== null) {
+      let positionCopy = { ...position };
+      let player = positionCopy[starting];
+      positionCopy[advance] = player;
+      setPosition(positionCopy);
+    }
+  };
+
+  const reset = () => {
+    let defaultPositon = {
+      ...position,
+      a: "p1",
+      b: "p2",
+      c: "p3",
+      d: "p4",
+      e: "p5",
+      f: "p6",
+      g: "p7",
+      h: "p8",
+      i: null,
+      j: null,
+      k: null,
+      l: null,
+      m: null,
+      n: null,
+      o: null,
+      p: null,
+    };
+    setPosition(defaultPositon);
+  };
   return (
     <Wrapper>
       <div class="tournament-container">
-        <div class="tournament-headers">
-          <h3>Round of 16</h3>
-          <h3>Quarter-Finals</h3>
-          <h3>Semi-Finals</h3>
-          <h3>Final</h3>
-          <h3>Winner</h3>
-        </div>
-
         <div class="tournament-brackets">
           <ul class="bracket bracket-1">
             <li class="team-item">
-              A2 <time>14:00</time> C2
+              {position.i === null ? (
+                <button
+                  onClick={() => {
+                    win("a", "i");
+                  }}
+                >
+                  {position.a}
+                </button>
+              ) : (
+                <div>{position.a} </div>
+              )}
             </li>
             <li class="team-item">
-              D1 <time>20:00</time> 3BEF
+              {position.i === null ? (
+                <button
+                  onClick={() => {
+                    win("b", "i");
+                  }}
+                >
+                  {position.b}
+                </button>
+              ) : (
+                <div>{position.b} </div>
+              )}
             </li>
             <li class="team-item">
-              B1 <time>17:00</time> 3ACD
+              {position.j === null ? (
+                <button
+                  onClick={() => {
+                    win("c", "j");
+                  }}
+                >
+                  {position.c}
+                </button>
+              ) : (
+                <div>{position.c} </div>
+              )}
             </li>
             <li class="team-item">
-              F1 <time>20:00</time> E2
+              {position.j === null ? (
+                <button
+                  onClick={() => {
+                    win("d", "j");
+                  }}
+                >
+                  {position.d}
+                </button>
+              ) : (
+                <div>{position.d} </div>
+              )}
             </li>
             <li class="team-item">
-              C1 <time>17:00</time> 3ABF
+              {position.k === null ? (
+                <button
+                  onClick={() => {
+                    win("e", "k");
+                  }}
+                >
+                  {position.e}
+                </button>
+              ) : (
+                <div>{position.e} </div>
+              )}
             </li>
             <li class="team-item">
-              E1 <time>17:00</time> D2
+              {position.k === null ? (
+                <button
+                  onClick={() => {
+                    win("f", "k");
+                  }}
+                >
+                  {position.f}
+                </button>
+              ) : (
+                <div>{position.f} </div>
+              )}
             </li>
             <li class="team-item">
-              A1 <time>14:00</time> 3CDE
+              {position.l === null ? (
+                <button
+                  onClick={() => {
+                    win("g", "l");
+                  }}
+                >
+                  {position.g}
+                </button>
+              ) : (
+                <div>{position.g} </div>
+              )}
             </li>
             <li class="team-item">
-              B2 <time>20:00</time> F2
+              {position.l === null ? (
+                <button
+                  onClick={() => {
+                    win("h", "l");
+                  }}
+                >
+                  {position.h}
+                </button>
+              ) : (
+                <div>{position.h} </div>
+              )}
             </li>
           </ul>
           <ul class="bracket bracket-2">
             <li class="team-item">
-              QF1 <time>20:00</time> QF2
+              {position.m === null ? (
+                <button
+                  onClick={() => {
+                    win("i", "m");
+                  }}
+                >
+                  {position.i}{" "}
+                </button>
+              ) : (
+                <div>{position.i} </div>
+              )}
             </li>
             <li class="team-item">
-              QF3 <time>20:00</time> QF4
+              {position.m === null ? (
+                <button
+                  onClick={() => {
+                    win("j", "m");
+                  }}
+                >
+                  {position.j}{" "}
+                </button>
+              ) : (
+                <div>{position.j} </div>
+              )}
             </li>
             <li class="team-item">
-              QF5 <time>20:00</time> QF6
+              {position.n === null ? (
+                <button
+                  onClick={() => {
+                    win("k", "n");
+                  }}
+                >
+                  {position.k}{" "}
+                </button>
+              ) : (
+                <div>{position.k} </div>
+              )}
             </li>
             <li class="team-item">
-              QF7 <time>20:00</time> QF8
+              {position.n === null ? (
+                <button
+                  onClick={() => {
+                    win("l", "n");
+                  }}
+                >
+                  {position.l}{" "}
+                </button>
+              ) : (
+                <div>{position.l} </div>
+              )}
             </li>
           </ul>
           <ul class="bracket bracket-3">
             <li class="team-item">
-              SF1 <time>20:00</time> SF2
+              {position.o === null ? (
+                <button
+                  onClick={() => {
+                    win("m", "o");
+                  }}
+                >
+                  {position.m}{" "}
+                </button>
+              ) : (
+                <div>{position.m} </div>
+              )}
             </li>
             <li class="team-item">
-              SF3 <time>20:00</time> SF4
+              {position.o === null ? (
+                <button
+                  onClick={() => {
+                    win("n", "o");
+                  }}
+                >
+                  {position.n}{" "}
+                </button>
+              ) : (
+                <div>{position.n} </div>
+              )}
             </li>
           </ul>
           <ul class="bracket bracket-4">
             <li class="team-item">
-              F1 <time>20:00</time> F2
+              <div>Winner:{position.o} </div>
             </li>
-          </ul>
-
-          <ul class="bracket bracket-5">
-            <li class="team-item">European Champions</li>
           </ul>
         </div>
       </div>
+      <Reset onClick={reset}>Reset</Reset>
     </Wrapper>
   );
 };
@@ -229,4 +407,9 @@ const Wrapper = styled.div`
     padding: 0 0.6rem;
   }
 `;
+
+const Reset = styled.button`
+  margin-bottom: 10px;
+`;
+
 export default TournamentEight;

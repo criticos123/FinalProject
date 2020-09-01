@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { AppContext } from "./AppContext";
 
 const TournamentFour = () => {
   const [position, setPosition] = useState({
@@ -20,6 +19,20 @@ const TournamentFour = () => {
       positionCopy[advance] = player;
       setPosition(positionCopy);
     }
+  };
+
+  const reset = () => {
+    let defaultPositon = {
+      ...position,
+      a: "p1",
+      b: "p2",
+      c: "p3",
+      d: "p4",
+      e: null,
+      f: null,
+      g: null,
+    };
+    setPosition(defaultPositon);
   };
   return (
     <Wrapper>
@@ -47,7 +60,7 @@ const TournamentFour = () => {
                     win("b", "e");
                   }}
                 >
-                  {position.b}{" "}
+                  {position.b}
                 </button>
               ) : (
                 <div>{position.b} </div>
@@ -60,7 +73,7 @@ const TournamentFour = () => {
                     win("c", "f");
                   }}
                 >
-                  {position.c}{" "}
+                  {position.c}
                 </button>
               ) : (
                 <div>{position.c} </div>
@@ -73,7 +86,7 @@ const TournamentFour = () => {
                     win("d", "f");
                   }}
                 >
-                  {position.d}{" "}
+                  {position.d}
                 </button>
               ) : (
                 <div>{position.d} </div>
@@ -88,7 +101,7 @@ const TournamentFour = () => {
                     win("e", "g");
                   }}
                 >
-                  {position.e}{" "}
+                  {position.e}
                 </button>
               ) : (
                 <div>{position.e} </div>
@@ -101,7 +114,7 @@ const TournamentFour = () => {
                     win("f", "g");
                   }}
                 >
-                  {position.f}{" "}
+                  {position.f}
                 </button>
               ) : (
                 <div>{position.f} </div>
@@ -113,6 +126,7 @@ const TournamentFour = () => {
           </ul>
         </div>
       </div>
+      <Reset onClick={reset}>Reset</Reset>
     </Wrapper>
   );
 };
@@ -265,4 +279,7 @@ const Wrapper = styled.div`
   }
 `;
 
+const Reset = styled.button`
+  margin-bottom: 10px;
+`;
 export default TournamentFour;

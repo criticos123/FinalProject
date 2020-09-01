@@ -12,12 +12,8 @@ const Feed = () => {
       return (
         <Container>
           <Gametitle>{item.name}</Gametitle>
-          <Players>players:{item.players}</Players>
-          {item.started === false ? (
-            <Join to={`/tournament/${item.id}`}>Join</Join>
-          ) : (
-            <Cannot>Cannot Join it has started</Cannot>
-          )}
+          <Players>Number of players:{item.players}</Players>
+          <Join to={`/tournament/${item.id}`}>Join</Join>
         </Container>
       );
     });
@@ -56,20 +52,14 @@ const Join = styled(NavLink)`
     opacity: 0.75;
   }
 `;
-const Cannot = styled.span`
-  padding: 20px;
-  font-size: 15px;
-  background: #dcdcdc;
-  color: #fff;
-  width: 10vw;
-  height: 30px;
-`;
+
 const Gametitle = styled.p`
   font-size: 20px;
 `;
 
 const Players = styled.span`
   font-size: 15px;
+  margin-top: 25px;
 `;
 
 export default Feed;

@@ -26,7 +26,7 @@ const providers = {
 const AppProvider = ({ children, signInWithGoogle, signOut, user }) => {
   const [appUser, setAppUser] = useState({});
   const [message, setMessage] = useState("");
-  const [tourney, setTourney] = useState("");
+  const [tourney, setTourney] = useState([]);
   const handleSignOut = () => {
     signOut();
     setAppUser({});

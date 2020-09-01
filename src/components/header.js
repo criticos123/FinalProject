@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { AppContext } from "./AppContext";
 
@@ -12,7 +12,8 @@ const Header = () => {
         <Title>Tournaminator</Title>
       </Homelink>
       <Navbar>
-        <Text>Welcome, {appUser.displayName}</Text>
+        <Image src={appUser.photoURL} />
+        <Text>{appUser.displayName}</Text>
         <Homelink to="/">
           <Button onClick={handleSignOut}>Sign Out</Button>
         </Homelink>
@@ -24,6 +25,7 @@ const Header = () => {
 const Wrapper = styled.div`
   height: 150px;
   background-color: #9400d3;
+  width: 100%;
 `;
 
 const Title = styled.h1`
@@ -66,5 +68,12 @@ const Button = styled.button`
 
 const Homelink = styled(NavLink)`
   text-decoration: none;
+`;
+
+const Image = styled.img`
+  width: 30px;
+  height: 30px;
+  border-radius: 100px;
+  margin-left: 20px;
 `;
 export default Header;

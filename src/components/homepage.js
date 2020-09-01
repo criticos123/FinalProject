@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import React from "react";
 import styled from "styled-components";
 import Header from "./header";
 import Feed from "./Feed";
@@ -36,37 +35,4 @@ const Title = styled.h3`
   margin-left: 20px;
 `;
 
-const Products = styled.div``;
-
-const Container = styled.div`
-  border: 2px solid #483d8b;
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-  margin-bottom: 20px;
-  font-weight: bold;
-`;
-
-const Join = styled.button`
-  padding-left: 10px;
-  padding-right: 10px;
-  font-size: 15px;
-  background: #8b008b;
-  color: #fff;
-  width: 10vw;
-  height: 30px;
-  border: 1px solid #4b0082;
-  transition: all 0.2s ease-in-out;
-
-  &:hover {
-    transform: scale(1.1);
-  }
-  &:active {
-    opacity: 0.75;
-  }
-`;
-
-const Gametitle = styled.p`
-  font-size: 20px;
-`;
 export default Homepage;
