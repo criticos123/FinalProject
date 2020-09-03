@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
+import { AppContext } from "./AppContext";
 
 const TournamentFour = () => {
+  const { appUser, tourney } = useContext(AppContext);
+  const [tag, setTag] = useState("");
   const [position, setPosition] = useState({
-    a: "p1",
+    a: `${appUser.displayName}`,
     b: "p2",
     c: "p3",
     d: "p4",
@@ -12,6 +15,14 @@ const TournamentFour = () => {
     g: null,
   });
 
+  const handleChange = (event) => {
+    setTag(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+  console.log(position);
   const win = (starting, advance) => {
     if (position[starting] !== null) {
       let positionCopy = { ...position };
@@ -24,7 +35,7 @@ const TournamentFour = () => {
   const reset = () => {
     let defaultPositon = {
       ...position,
-      a: "p1",
+      a: `${appUser.displayName}`,
       b: "p2",
       c: "p3",
       d: "p4",
@@ -34,6 +45,7 @@ const TournamentFour = () => {
     };
     setPosition(defaultPositon);
   };
+
   return (
     <Wrapper>
       <div class="tournament-container">
@@ -42,14 +54,20 @@ const TournamentFour = () => {
           <ul class="bracket bracket-1">
             <li class="team-item">
               {position.e === null ? (
-                <button
-                  onClick={() => {
-                    win("a", "e");
-                  }}
-                >
-                  {position.a}
-                </button>
+                // <button
+                //   onClick={() => {
+                //     win("a", "e");
+                //   }}
+                // >
+                <form onSubmit={handleSubmit}>
+                  <label>
+                    Name:
+                    <input type="text" value="value" onChange={handleChange} />
+                  </label>
+                  <input type="submit" value="Submit" />
+                </form>
               ) : (
+                // </button>
                 <div>{position.a} </div>
               )}
             </li>

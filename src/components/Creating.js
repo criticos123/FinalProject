@@ -6,7 +6,7 @@ const Creating = () => {
   const [name, setName] = useState("");
   const [player, setPlayer] = useState("4");
   const { tourney, setTourney } = useContext(AppContext);
-  console.log(tourney);
+
   const handleChange = (event) => {
     setName(event.target.value);
   };
@@ -73,6 +73,10 @@ const Inputbutton = styled.input`
   color: #fff;
   background-color: #8a2be2;
   margin-left: 10px;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 const InputText = styled.input`
   margin-left: 10px;

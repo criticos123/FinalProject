@@ -6,7 +6,6 @@ const Comment = () => {
   const { appUser } = useContext(AppContext);
   const [comments, setComments] = useState([]);
   const [state, setState] = useState("");
-  console.log(appUser);
   const handleChange = (event) => {
     setState(event.target.value);
   };

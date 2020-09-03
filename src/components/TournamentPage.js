@@ -9,11 +9,9 @@ import { AppContext } from "./AppContext";
 
 const TournamentPage = () => {
   const { tourney } = useContext(AppContext);
-  console.log(tourney);
   let { id } = useParams();
 
   const findPlayer = tourney.find((e) => e.id.toString() === id);
-  console.log(findPlayer);
   if (findPlayer !== undefined) {
     return (
       <>

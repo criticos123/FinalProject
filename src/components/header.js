@@ -14,9 +14,10 @@ const Header = () => {
       <Navbar>
         <Image src={appUser.photoURL} />
         <Text>{appUser.displayName}</Text>
-        <Homelink to="/">
+        <Profilelink to="/profile">profile</Profilelink>
+        <Signoutlink to="/">
           <Button onClick={handleSignOut}>Sign Out</Button>
-        </Homelink>
+        </Signoutlink>
       </Navbar>
     </Wrapper>
   );
@@ -26,6 +27,7 @@ const Wrapper = styled.div`
   height: 150px;
   background-color: #9400d3;
   width: 100%;
+  margin-bottom: 20px;
 `;
 
 const Title = styled.h1`
@@ -66,10 +68,19 @@ const Button = styled.button`
   }
 `;
 
+const Signoutlink = styled(NavLink)`
+  text-decoration: none;
+  margin-left: 10px;
+`;
 const Homelink = styled(NavLink)`
   text-decoration: none;
+  margin-left: 10px;
 `;
-
+const Profilelink = styled(NavLink)`
+  text-decoration: none;
+  margin-left: 10px;
+  color: #fff;
+`;
 const Image = styled.img`
   width: 30px;
   height: 30px;
